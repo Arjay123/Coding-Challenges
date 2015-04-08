@@ -1,2 +1,2 @@
-# RedditDailyProgrammer
-Solutions to /r/Dailyprogrammer challenges
+# Coding Challenges
+Solutions to various coding challenges
