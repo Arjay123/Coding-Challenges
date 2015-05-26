@@ -7,9 +7,29 @@ class Card:
 		self.suit = suit
 		self.value = value
 
-	def printCard(self):
-		print(self.value + ' of ' + self.suit)
+	def __str__(self):
+		return(self.value + ' of ' + self.suit)
+
+	def __repr__(self):
+		return(self.value + ' of ' + self.suit)
+
+class Deck:
+
+	cards = []
+	suits = ["Spades", "Clubs", "Diamonds", "Hearts"]
+	values = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]
+
+	def __init__(self):
+		self.reset()
+
+	#reset the list of cards
+	def reset(self):
+		self.cards = []
+		for suit in self.suits:
+			for value in self.values:
+				self.cards.append(Card(suit, value))
 
 
-#card = Card("Spades", "10")
-#card.printCard()
+
+#deck = Deck()
+#print(deck.cards)
