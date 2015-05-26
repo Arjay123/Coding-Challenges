@@ -1,4 +1,6 @@
 #http://www.reddit.com/r/dailyprogrammer/comments/378h44/20150525_challenge_216_easy_texas_hold_em_1_of_3/
+from random import shuffle
+
 class Card:
 	suit = ''
 	value = ''
@@ -28,8 +30,12 @@ class Deck:
 		for suit in self.suits:
 			for value in self.values:
 				self.cards.append(Card(suit, value))
+		shuffle(self.cards)
 
+	def draw(self):
+		return list.pop(self.cards)
 
-
-#deck = Deck()
-#print(deck.cards)
+deck = Deck()
+print(len(deck.cards))
+print(deck.draw())
+print(len(deck.cards))
