@@ -16,7 +16,6 @@ class Card:
 		return(self.value + ' of ' + self.suit)
 
 class Deck:
-
 	cards = []
 	suits = ["Spades", "Clubs", "Diamonds", "Hearts"]
 	values = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]
@@ -35,7 +34,47 @@ class Deck:
 	def draw(self):
 		return list.pop(self.cards)
 
-deck = Deck()
-print(len(deck.cards))
-print(deck.draw())
-print(len(deck.cards))
+	def dealHand(self):
+		hand = []
+		hand.append(list.pop(self.cards))
+		hand.append(list.pop(self.cards))
+		return hand
+
+class Player():
+	name = ""
+	hand = []
+	chips = 0
+
+	def __init__(self, name):
+		self.name = name
+
+	def changeHand(self, newHand):
+		self.hand = newHand
+
+def play():
+	deck = Deck()
+	players = []
+	playerCt = 0
+	while(playerCt < 2 or playerCt > 8):
+		playerCt = int(input("How many players (2-8)? "))
+
+	print()
+	player = Player("Player 1")
+	player.changeHand(deck.dealHand())
+
+	players.append(player)
+	for x in range(1, playerCt):
+		cpu = Player("CPU "+ str(x))
+		cpu.changeHand(deck.dealHand())
+		players.append(cpu)
+
+	for p in players:
+		print(p.name + "'s Hand: ", end='') 
+		print(p.hand)
+
+	#print(len(deck.cards))
+	#print(deck.draw())
+	#print(len(deck.cards))
+
+
+play()
